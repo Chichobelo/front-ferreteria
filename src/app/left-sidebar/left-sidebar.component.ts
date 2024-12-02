@@ -24,9 +24,9 @@ export class LeftSidebarComponent {
       label: 'Productos',
     },
     {
-      routeLink: 'pages',
-      icon: 'fal fa-file',
-      label: 'Informe de produccion',
+      routeLink: 'creacion-producto',
+      icon: 'fal fa-cube',
+      label: 'crear producto',
     },
     {
       routeLink: 'componente',
@@ -34,10 +34,16 @@ export class LeftSidebarComponent {
       label: 'crear componente',
     },
     {
+      routeLink: 'pages',
+      icon: 'fal fa-file',
+      label: 'Informe de produccion',
+    },
+    {
       routeLink: 'settings',
       icon: 'fal fa-cog',
       label: 'configuracion',
     },
+    
     
     
   ];
