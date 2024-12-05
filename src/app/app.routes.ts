@@ -6,9 +6,11 @@ import { PagesComponent } from './pages/pages.component';
 import { loginComponent } from './login/login.component';
 import { ComponenteComponent } from './componente/componente.component';
 import { CreacionProductoComponent } from './creacion-producto/creacion-producto.component';
+import { InventarioComponent } from './inventario/inventario.component';
+import { FormulaComponent } from './formula/formula.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, // Redirigir a login por defecto
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }, 
   { path: 'login', component: loginComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'products', component: ProductsComponent },
@@ -16,7 +18,10 @@ export const routes: Routes = [
   { path: 'pages', component: PagesComponent },
   { path: 'componente', component: ComponenteComponent },
   { path: 'creacion-producto', component: CreacionProductoComponent },
+  { path: 'inventario', component: InventarioComponent },
+  { path: 'formula', component: FormulaComponent },
+  
   { path: '**', redirectTo: 'login' },
-   // Ruta comodín para manejar URLs no definidas
+   
 ];
 

@@ -1,0 +1,141 @@
+/* Contenedor principal */
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f9fafe;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Títulos */
+  h2 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #0d6efd;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  h4 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #495057;
+    margin-bottom: 15px;
+  }
+  
+  /* Botón azul para agregar ingredientes */
+  .btn-primary {
+    background-color: #0d6efd;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0b5ed7;
+    transform: scale(1.05);
+  }
+  
+  .btn-primary:active {
+    transform: scale(1);
+  }
+  
+  /* Botón rojo para eliminar */
+  .btn-danger {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .btn-danger:hover {
+    background-color: #b02a37;
+    transform: scale(1.05);
+  }
+  
+  .btn-danger:active {
+    transform: scale(1);
+  }
+  
+  /* Botón negro para guardar */
+  .btn-dark {
+    background-color: #3958be;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+    width: 100%;
+  }
+  
+  .btn-dark:hover {
+    background-color: #144464;
+    transform: scale(1.03);
+  }
+  
+  .btn-dark:active {
+    transform: scale(1);
+  }
+  
+  /* Inputs y select */
+  input[type="text"],
+  input[type="number"],
+  select {
+    border: 2px solid #ced4da;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 100%;
+  }
+  
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 6px rgba(13, 110, 253, 0.3);
+    outline: none;
+  }
+  
+  /* Tabla */
+  .table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  .table th,
+  .table td {
+    text-align: center;
+    padding: 12px;
+  }
+  
+  .table th {
+    background-color: #e9ecef;
+    font-weight: bold;
+    color: #495057;
+  }
+  
+  .table td {
+    background-color: #f8f9fa;
+  }
+  
+  /* Espaciado */
+  .my-3 {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .mt-4 {
+    margin-top: 24px;
+  }
+  

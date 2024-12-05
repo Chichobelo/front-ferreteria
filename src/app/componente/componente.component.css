@@ -1,4 +1,4 @@
-/* Contenedor general */
+
 .container {
     max-width: 800px;
     margin: 30px auto;
@@ -13,7 +13,7 @@
     margin-bottom: 20px;
   }
   
-  /* Formularios */
+  
   form {
     background: #f9f9f9;
     padding: 20px;

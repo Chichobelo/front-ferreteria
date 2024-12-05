@@ -34,15 +34,26 @@ export class LeftSidebarComponent {
       label: 'crear componente',
     },
     {
+      routeLink: 'formula',
+      icon: 'fal fa-cube',
+      label: 'crear formula',
+    },
+    {
       routeLink: 'pages',
       icon: 'fal fa-file',
       label: 'Informe de produccion',
+    },
+    {
+      routeLink: 'inventario',
+      icon: 'fal fa-box',
+      label: 'inventario',
     },
     {
       routeLink: 'settings',
       icon: 'fal fa-cog',
       label: 'configuracion',
     },
+    
     
     
     

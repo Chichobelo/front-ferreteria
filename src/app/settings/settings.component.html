@@ -17,16 +17,12 @@
     <table class="custom-table">
       <thead>
         <tr>
-          <th>Item</th>
+          <th>#</th>
           <th>Usuario</th>
-          <th>Número de documento</th>
-          <th>Nombres y apellidos</th>
-          <th>E-mail</th>
-          <th>Dirección</th>
-          <th>Teléfono</th>
-          <th>Cargo</th>
+          <th>Documento</th>
+          <th>Nombre Completo</th>
           <th>Estado</th>
-          <th>Acción</th>
+          <th>Acciones</th>
         </tr>
       </thead>
       <tbody>
@@ -35,10 +31,6 @@
           <td>{{ user.usuario }}</td>
           <td>{{ user.documento }}</td>
           <td>{{ user.nombre }}</td>
-          <td>{{ user.email }}</td>
-          <td>{{ user.direccion }}</td>
-          <td>{{ user.telefono }}</td>
-          <td>{{ user.cargo }}</td>
           <td>
             <span
               class="status"
@@ -66,53 +58,51 @@
       </div>
       <div class="modal-body">
         <form>
+          <!-- Campo Nombre y Apellido -->
+          <div class="form-row">
+            <input
+              type="text"
+              placeholder="Nombre y Apellido"
+              [(ngModel)]="currentUser.nombre"
+              name="nombre"
+              required
+            />
+          </div>
+
+          <!-- Campo Usuario -->
           <div class="form-row">
             <input
               type="text"
               placeholder="Usuario"
               [(ngModel)]="currentUser.usuario"
               name="usuario"
-            />
-            <input
-              type="text"
-              placeholder="Número de Documento"
-              [(ngModel)]="currentUser.documento"
-              name="documento"
-            />
-            <input
-              type="text"
-              placeholder="Nombres y Apellidos"
-              [(ngModel)]="currentUser.nombre"
-              name="nombre"
+              required
             />
           </div>
+
+          <!-- Campo Contraseña -->
           <div class="form-row">
             <input
-              type="email"
-              placeholder="E-mail"
-              [(ngModel)]="currentUser.email"
-              name="email"
-            />
-            <input
-              type="text"
-              placeholder="Dirección"
-              [(ngModel)]="currentUser.direccion"
-              name="direccion"
-            />
-            <input
-              type="text"
-              placeholder="Teléfono"
-              [(ngModel)]="currentUser.telefono"
-              name="telefono"
+              type="password"
+              placeholder="Contraseña"
+              [(ngModel)]="currentUser.contrasena"
+              name="contrasena"
+              required
             />
           </div>
+
+          <!-- Campo Cargo (Operador/Administrador) -->
           <div class="form-row">
-            <select [(ngModel)]="currentUser.cargo" name="cargo">
-              <option value="" disabled selected>Seleccionar Cargo</option>
-              <option value="Vendedor">operador</option>
+            <select [(ngModel)]="currentUser.cargo" name="cargo" required>
+              <option value="" disabled>Seleccionar Cargo</option>
+              <option value="Operador">Operador</option>
               <option value="Administrador">Administrador</option>
             </select>
-            <select [(ngModel)]="currentUser.estado" name="estado">
+          </div>
+
+          <!-- Campo Estado (Activo/Inactivo) -->
+          <div class="form-row">
+            <select [(ngModel)]="currentUser.estado" name="estado" required>
               <option value="Activo">Activo</option>
               <option value="Inactivo">Inactivo</option>
             </select>
@@ -129,24 +119,31 @@
                 <input type="checkbox" [(ngModel)]="currentUser.permisos.productos" /> Productos
               </label>
               <label>
-                <input type="checkbox" [(ngModel)]="currentUser.permisos.informeProduccion" /> Informe de Producción
+                <input type="checkbox" [(ngModel)]="currentUser.permisos.informeProduccion" />
+                Informe de Producción
               </label>
               <label>
-                <input type="checkbox" [(ngModel)]="currentUser.permisos.crearComponente" /> Crear Componente
+                <input type="checkbox" [(ngModel)]="currentUser.permisos.crearComponente" />
+                Crear Componente
               </label>
               <label>
-                <input type="checkbox" [(ngModel)]="currentUser.permisos.configuracion" /> Configuración
+                <input type="checkbox" [(ngModel)]="currentUser.permisos.configuracion" />
+                Configuración
               </label>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button class="btn close-btn" (click)="closeModal()">Cancelar</button>
+        <!-- Botón Cancelar -->
+        <button class="btn cancel-btn" (click)="closeModal()">Cancelar</button>
+      
+        <!-- Botón Agregar -->
         <button class="btn save-btn" (click)="saveUser()">
           {{ isEditing ? 'Guardar Cambios' : 'Agregar' }}
         </button>
       </div>
+      
     </div>
   </div>
 </div>

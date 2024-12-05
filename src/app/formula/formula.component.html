@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <h2>Crear Fórmula de Producto</h2>
+  <div class="form-group my-3">
+    <label for="producto">Seleccionar Producto</label>
+    <select id="producto" class="form-control" [(ngModel)]="selectedProducto">
+      <option *ngFor="let producto of productos" [value]="producto.id">{{ producto.nombre }}</option>
+    </select>
+  </div>
+  <div class="my-3">
+    <h4>Ingredientes de la Fórmula</h4>
+    <button class="btn btn-primary btn-sm" (click)="agregarIngrediente()">+ Agregar Ingrediente</button>
+    <div class="table-responsive my-3">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Componente</th>
+            <th>Cantidad</th>
+            <th>Unidad</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ingrediente of ingredientes; let i = index">
+            <td><input type="text" class="form-control" [(ngModel)]="ingrediente.codigo" placeholder="ej. T1, P2, F3" /></td>
+            <td><input type="number" class="form-control" [(ngModel)]="ingrediente.cantidad" /></td>
+            <td>
+              <select class="form-control" [(ngModel)]="ingrediente.unidad">
+                <option value="GR">GR</option>
+                <option value="KG">KG</option>
+              </select>
+            </td>
+            <td>
+              <button class="btn btn-danger btn-sm" (click)="eliminarIngrediente(i)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <button class="btn btn-dark" (click)="guardarFormula()">Guardar Fórmula</button>
+</div>
