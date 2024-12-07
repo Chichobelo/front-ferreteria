@@ -29,24 +29,19 @@ export class LeftSidebarComponent {
       label: 'crear producto',
     },
     {
-      routeLink: 'componente',
-      icon: 'fal fa-cube',
-      label: 'crear componente',
-    },
-    {
       routeLink: 'formula',
       icon: 'fal fa-cube',
       label: 'crear formula',
     },
     {
+      routeLink: 'inventario',
+      icon: 'fal fa-box',
+      label: 'Componentes',
+    },
+    {
       routeLink: 'pages',
       icon: 'fal fa-file',
       label: 'Informe de produccion',
-    },
-    {
-      routeLink: 'inventario',
-      icon: 'fal fa-box',
-      label: 'inventario',
     },
     {
       routeLink: 'settings',
