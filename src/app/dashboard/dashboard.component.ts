@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms'; // Importa FormsModule
 })
 export class DashboardComponent {
   usuario = {
-    nombre: 'Juan Pérez',
+    nombre: 'Danny Restrepo',
     email: 'juan.perez@ejemplo.com'
   };
 

@@ -11,50 +11,54 @@ import { FormsModule } from '@angular/forms';
 })
 export class InventarioComponent {
   inventory = [
-    { name: 'T1', quantity: '250GR', stock: 100, minStock: 50 },
-    { name: 'P2', quantity: '350GR', stock: 150, minStock: 75 }
+    { name: 'T1', stock: 100, minStock: 50, unit: 'gr' },
+    { name: 'P2', stock: 150, minStock: 75, unit: 'kl' }
   ];
 
   selectedItem: any = null;
   showCreateModal = false;
-  newChemical = { name: '', quantity: '', stock: 0, minStock: 0 };
+  newChemical = { name: '', stock: 0, minStock: 0, unit: 'gr' };
+  searchTerm: string = '';
 
-  // Editar un químico
-  editStock(item: any) {
-    this.selectedItem = { ...item };  // Clonar el químico seleccionado
+  getFilteredComponents() {
+    return this.searchTerm
+      ? this.inventory.filter(item =>
+          item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+        )
+      : this.inventory;
   }
 
-  // Guardar cambios en el químico seleccionado
+  editStock(item: any) {
+    this.selectedItem = { ...item };
+  }
+
   saveStock() {
     const index = this.inventory.findIndex(item => item.name === this.selectedItem.name);
-    if (index !== -1) {
-      this.inventory[index] = { ...this.selectedItem };  // Actualizar el inventario
+    if (index !== -1) this.inventory[index] = { ...this.selectedItem };
+    this.closeModal();
+  }
+
+  deleteChemical(item: any) {
+    this.inventory = this.inventory.filter(chemical => chemical !== item);
+  }
+
+  addChemical() {
+    if (this.newChemical.name && this.newChemical.stock > 0) {
+      this.inventory.push({ ...this.newChemical });
+      this.closeCreateModal();
     }
-    this.closeModal();  // Cerrar modal
   }
 
   closeModal() {
     this.selectedItem = null;
   }
 
-  openCreateModal() {
-    this.showCreateModal = true;
-    this.resetNewChemical();
-  }
-
-  // Agregar un nuevo químico al inventario
-  addChemical() {
-    if (this.newChemical.name && this.newChemical.quantity) {
-      this.inventory.push({ ...this.newChemical });
-      this.closeCreateModal();
-    }
-  }
-
   closeCreateModal() {
+    this.newChemical = { name: '', stock: 0, minStock: 0, unit: 'gr' };
     this.showCreateModal = false;
   }
 
-  resetNewChemical() {
-    this.newChemical = { name: '', quantity: '', stock: 0, minStock: 0 };
+  openCreateModal() {
+    this.showCreateModal = true;
   }
 }
