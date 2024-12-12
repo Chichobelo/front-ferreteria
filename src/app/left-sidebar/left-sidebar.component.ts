@@ -24,6 +24,11 @@ export class LeftSidebarComponent {
       label: 'Productos',
     },
     {
+      routeLink: 'inventario',
+      icon: 'fal fa-box',
+      label: 'Componentes',
+    },
+    {
       routeLink: 'creacion-producto',
       icon: 'fal fa-cube',
       label: 'crear producto',
@@ -32,11 +37,6 @@ export class LeftSidebarComponent {
       routeLink: 'formula',
       icon: 'fal fa-cube',
       label: 'crear formula',
-    },
-    {
-      routeLink: 'inventario',
-      icon: 'fal fa-box',
-      label: 'Componentes',
     },
     {
       routeLink: 'pages',

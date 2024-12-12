@@ -1,24 +1,27 @@
-
-
+/* Estilos generales */
 .sidenav {
   background: #012a5b;
   transition: all 0.5s ease;
   position: fixed;
   z-index: 1;
   top: 0;
-  width: 16.5625rem;
   height: 100vh;
   box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+  width: 16.5625rem;
 }
+
 .sidenav-collapsed {
   width: 5rem;
 }
+
 .sidenav .logo-container {
   display: flex;
   align-items: center;
-  padding: 0.938rem 0.938rem 0 0.938rem;
+  justify-content: flex-start;
+  padding: 0.938rem;
   width: 100%;
 }
+
 .sidenav .logo-container .logo {
   background: #fff;
   text-align: center;
@@ -31,14 +34,17 @@
   cursor: pointer;
   border: none;
 }
+
 .sidenav .logo-container .logo-text {
-  margin-left: 1.5rem;
+  margin-left: 1rem;
   font-size: 24px;
   font-weight: 700;
   color: #fff;
+  display: inline-block;
 }
+
 .sidenav .logo-container .btn-close {
-  margin-left: auto;
+  margin-left: 1rem;
   cursor: pointer;
   width: 2rem;
   height: 2rem;
@@ -46,44 +52,61 @@
   background-color: transparent;
   border: none;
 }
+
 .sidenav .logo-container .btn-close .fa-times {
   color: #fff;
   font-size: 24px;
 }
 
 .sidenav-nav {
-  list-style: none;
   padding: 0.938rem;
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* Cambiado a flex-start para evitar íconos flotantes */
   height: calc(100% - 3.65rem);
-  cursor: pointer;
 }
+
+.sidenav-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%; /* Aseguramos que ocupe el ancho completo */
+}
+
 .sidenav-nav .sidenav-nav-item {
-  width: 100%;
+  width: 100%; /* Mantener los elementos dentro del contenedor */
   margin-bottom: 0.625rem;
 }
+
 .sidenav-nav .sidenav-nav-item .sidenav-nav-link {
   display: flex;
   align-items: center;
+  justify-content: flex-start; /* Alineación horizontal a la izquierda */
   height: 3rem;
   color: #f3f3f3;
   text-decoration: none;
   border-radius: 0.625rem;
   transition: all 0.3s ease;
+  padding: 0 1rem;
+  overflow: hidden; /* Prevenir desbordamientos */
 }
+
 .sidenav-nav .sidenav-nav-item .sidenav-nav-link .sidenav-link-icon {
   font-size: 22px;
   width: 2rem;
   min-width: 2rem;
   text-align: center;
-  padding: 12px;
+  margin-right: 1rem; /* Espaciado entre ícono y texto */
 }
+
 .sidenav-nav .sidenav-nav-item .sidenav-nav-link .sidenav-link-text {
-  margin-left: 1.5rem;
+  flex: 1; /* Ocupa el espacio restante */
+  white-space: nowrap; /* Evita saltos de línea */
+  overflow: hidden; /* Prevenir desbordamientos */
+  text-overflow: ellipsis; /* Agrega "..." si es necesario */
 }
+
 .sidenav-nav .sidenav-nav-item:hover .sidenav-nav-link {
   background-color: #fff;
   color: #000;
@@ -92,7 +115,60 @@
 .active {
   background-color: #fff;
 }
+
 .active .sidenav-link-icon,
 .active .sidenav-link-text {
   color: #000;
+}
+
+/* Media Queries para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .sidenav {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    max-height: 100vh;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .sidenav-collapsed {
+    width: 0;
+    padding: 0;
+  }
+
+  .sidenav-nav {
+    flex-direction: column;
+  }
+
+  .sidenav .logo-container {
+    justify-content: flex-start;
+  }
+
+  .sidenav-nav .sidenav-nav-item {
+    text-align: center;
+  }
+
+  .sidenav-nav .sidenav-nav-item .sidenav-nav-link {
+    padding: 15px 10px;
+  }
+
+  .sidenav-nav .sidenav-nav-item .sidenav-nav-link .sidenav-link-text {
+    display: none; /* Ocultamos el texto en pantallas pequeñas */
+  }
+
+  .sidenav .logo-container .logo-text {
+    font-size: 18px;
+    display: none; /* Ocultamos el logo en pantallas pequeñas */
+  }
+
+  /* Mostrar el logo solo en versiones colapsadas */
+  .sidenav-collapsed .logo-text {
+    display: block;
+    font-size: 18px;
+  }
+
+  /* Botón hamburguesa visible solo en pantallas pequeñas */
+  .logo-container .logo {
+    display: block;
+  }
 }

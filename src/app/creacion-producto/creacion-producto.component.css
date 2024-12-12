@@ -1,152 +1,334 @@
-/* Contenedor general */
+/* General */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
 .container {
-    max-width: 800px;
-    margin: 30px auto;
-    font-family: 'Arial', sans-serif;
-  }
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+}
+
+/* Header Section */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.card-header h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.card-header .btn-crear {
+  background-color: #0056b3;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.card-header .btn-crear:hover {
+  background-color: #0056b3;
+}
+
+/* Search Bar Section */
+.search-bar-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.search-bar-container .search-bar {
+  flex: 1;
+  max-width: 600px;
+  margin-right: 10px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.search-bar-container .search-bar:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Table Styles */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.table thead {
+  background-color: #0056b3;
+  color: white;
+}
+
+.table th,
+.table td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #f8f9fa;
+}
+
+.table tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+/* Form Styles */
+form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Modal Styles */
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center; /* Vertical centering */
+  overflow: auto; /* Enable scroll if needed */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Modal Header */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.modal-header .btn-close {
+  background-color: transparent;
+  color: #333;
+  font-size: 24px;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-header .btn-close:hover {
+  color: #eb5b48;
+}
+
+/* Modal Footer */
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-footer .btn-secundario {
+  background-color: #bd2e2e;
   
-  /* Títulos */
-  h2, h3 {
-    text-align: center;
-    color: #333;
-    font-weight: bold;
-    margin-bottom: 20px;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modal-footer .btn-crear {
+  background-color: #007bff;
+  color: white;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90%;
+    max-width: 100%;
+    padding: 15px;
   }
-  
-  /* Formularios */
-  form {
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+  .modal-header h2 {
+    font-size: 20px;
   }
-  
-  form .form-group {
-    margin-bottom: 15px;
+
+  .modal-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
   }
-  
-  label {
-    font-weight: bold;
-    color: #555;
-  }
-  
-  input, select {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 8px;
-    width: 100%;
-    transition: all 0.2s ease;
-  }
-  
-  input:focus, select:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  }
-  
-  /* Botón Crear Componente */
-  .btn-crear {
-    background-color: #2564ac;
-    color: white;
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .btn-crear:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .btn-crear:active {
-    transform: scale(0.95);
-  }
-  
-  /* Tabla */
-  table {
-    width: 100%;
-    margin-top: 20px;
-    border-collapse: collapse;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  thead {
-    background-color: #2564ac;
-    color: #fff;
-  }
-  
-  thead th {
-    padding: 10px;
-  }
-  
-  tbody tr {
-    border-bottom: 1px solid #ddd;
-    transition: background-color 0.2s ease;
-  }
-  
-  tbody tr:hover {
-    background-color: rgba(0, 123, 255, 0.1);
-  }
-  
-  td {
-    padding: 10px;
-    text-align: center;
-  }
-  
-  /* Botones de acciones */
-  .btn-accion {
+
+  .modal-footer .btn-secundario,
+  .modal-footer .btn-crear {
     font-size: 14px;
-    padding: 8px 16px;
-    border-radius: 50px;
-    cursor: pointer;
-    border: none;
-    transition: all 0.3s ease-in-out;
-    margin: 0 5px;
+    padding: 8px 15px;
   }
+}
+
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 90%;
+    max-width: 100%;
+    padding: 15px;
+  }
+
+  .modal-header h2 {
+    font-size: 20px;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .modal-footer .btn-secundario,
+  .modal-footer .btn-crear {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+}
+
+.modal-footer .btn-secundario:hover,
+.modal-footer .btn-crear:hover {
+  background-color: #0056b3;
   
-  /* Botón Editar */
-  .btn-info {
-    background-color: #1ca32e;
-    color: white;
+}
+
+/* Edit and Delete Buttons in Table */
+.table .btn-info {
+  padding: 8px 15px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: none;
+  background-color: #13963f; /* Blue for Edit button */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 5px;
+}
+
+.table .btn-info:hover {
+  background-color: #13963f;
+}
+
+.table .btn-danger {
+  padding: 8px 15px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: none;
+  background-color: #dc3545; /* Red for Delete button */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.table .btn-danger:hover {
+  background-color: #c82333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .btn-info:hover {
-    background-color: #138496;
-    transform: translateY(-3px);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+
+  .search-bar-container {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  .img-thumbnail {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: #f9f9f9;
+
+  .search-bar-container .search-bar {
+    margin-right: 0;
+    margin-bottom: 10px;
   }
-  
-  .btn-info:active {
-    transform: scale(0.95);
+
+  .modal-footer {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  /* Botón Eliminar */
-  .btn-danger {
-    background-color: #dc3545;
-    color: white;
+
+  .table .btn-info,
+  .table .btn-danger {
+    font-size: 12px;
+    padding: 6px 10px;
   }
-  
-  .btn-danger:hover {
-    background-color: #c82333;
-    transform: translateY(-3px);
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .btn-danger:active {
-    transform: scale(0.95);
-  }
-  
-  /* Espaciado entre botones */
-  .btn-accion:not(:last-child) {
-    margin-right: 10px;
-  }
-  
+}

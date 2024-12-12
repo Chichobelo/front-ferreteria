@@ -12,28 +12,52 @@ import { CommonModule } from '@angular/common';
 export class CreacionProductoComponent {
   unidades = ['Kilogramo', 'Litro', 'Unidad'];
   componentes: any[] = [];
-  nuevoComponente = { nombre: '', unidad: '', cantidad: 0, costo: '', imagen: '' };
+  nuevoComponente = { nombre: '', categoria: '', cantidad: 0, imagen: '' };
+  filtro: string = ''; // Término de búsqueda
   editIndex: number | null = null;
-  imagenProducto: string | undefined;
+  imagenProducto: string | null = null;
+  modalAbierto = false;
 
-  // Crear o actualizar componente
+  // Abrir modal
+  abrirModal() {
+    this.nuevoComponente = { nombre: '', categoria: '', cantidad: 0, imagen: '' };
+    this.editIndex = null;
+    this.modalAbierto = true;
+  }
+
+  // Cerrar modal
+  cerrarModal() {
+    this.modalAbierto = false;
+  }
+
+  // Obtener productos filtrados
+  get productosFiltrados(): any[] {
+    if (!this.filtro.trim()) {
+      return this.componentes;
+    }
+    return this.componentes.filter((producto) =>
+      producto.nombre.toLowerCase().includes(this.filtro.toLowerCase())
+    );
+  }
+
+  // Crear o actualizar producto
   crearComponente() {
     if (this.editIndex !== null) {
       this.componentes[this.editIndex] = { ...this.nuevoComponente };
-      this.editIndex = null;
     } else {
       this.componentes.push({ ...this.nuevoComponente });
     }
-    this.nuevoComponente = { nombre: '', unidad: '', cantidad: 0, costo: '', imagen: '' };
+    this.cerrarModal();
   }
 
-  // Editar componente
+  // Editar producto
   editarComponente(index: number) {
     this.nuevoComponente = { ...this.componentes[index] };
     this.editIndex = index;
+    this.modalAbierto = true;
   }
 
-  // Eliminar componente
+  // Eliminar producto
   eliminarComponente(index: number) {
     if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
       this.componentes.splice(index, 1);
@@ -51,11 +75,5 @@ export class CreacionProductoComponent {
       };
       reader.readAsDataURL(file);
     }
-  }
-
-  // Agregar productos (esto puede ser una acción como enviarlos a otra vista o almacenamiento)
-  agregarProductos() {
-    console.log('Productos agregados:', this.componentes);
-    // Aquí puedes enviar los productos a otra vista o guardarlos en un backend
   }
 }
