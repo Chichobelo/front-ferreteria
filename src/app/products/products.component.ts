@@ -45,67 +45,89 @@ export class ProductsComponent {
         { name: 'Y2', quantity: '2KG' },
         { name: 'Z3', quantity: '500GR' },
       ],
-      
     },
     {
-      id: 1,
-      name: 'Manoplas',
+      id: 3,
+      name: 'D-Pegar',
       image: 'https://i.pinimg.com/736x/4c/c5/57/4cc5575ece9366650d34a79904a2e300.jpg',
       formula: [
-        { name: 'T1', quantity: '250GR' },
-        { name: 'P2', quantity: '350GR' },
-        { name: 'F3', quantity: '600GR' },
-        { name: 'O4', quantity: '800GR' },
-        { name: 'Z8', quantity: '1650GR' },
+        { name: 'X1', quantity: '1KG' },
+        { name: 'Y2', quantity: '2KG' },
+        { name: 'Z3', quantity: '500GR' },
       ],
     },
     {
-      id: 1,
-      name: 'Manoplas',
+      id: 3,
+      name: 'D-Pegar',
       image: 'https://i.pinimg.com/736x/4c/c5/57/4cc5575ece9366650d34a79904a2e300.jpg',
       formula: [
-        { name: 'T1', quantity: '250GR' },
-        { name: 'P2', quantity: '350GR' },
-        { name: 'F3', quantity: '600GR' },
-        { name: 'O4', quantity: '800GR' },
-        { name: 'Z8', quantity: '1650GR' },
+        { name: 'X1', quantity: '1KG' },
+        { name: 'Y2', quantity: '2KG' },
+        { name: 'Z3', quantity: '500GR' },
       ],
     },
     {
-      id: 1,
-      name: 'Manoplas',
+      id: 3,
+      name: 'D-Pegar',
       image: 'https://i.pinimg.com/736x/4c/c5/57/4cc5575ece9366650d34a79904a2e300.jpg',
       formula: [
-        { name: 'T1', quantity: '250GR' },
-        { name: 'P2', quantity: '350GR' },
-        { name: 'F3', quantity: '600GR' },
-        { name: 'O4', quantity: '800GR' },
-        { name: 'Z8', quantity: '1650GR' },
+        { name: 'X1', quantity: '1KG' },
+        { name: 'Y2', quantity: '2KG' },
+        { name: 'Z3', quantity: '500GR' },
       ],
     },
     {
-      id: 1,
-      name: 'Manoplas',
+      id: 3,
+      name: 'D-Pegar',
       image: 'https://i.pinimg.com/736x/4c/c5/57/4cc5575ece9366650d34a79904a2e300.jpg',
       formula: [
-        { name: 'T1', quantity: '250GR' },
-        { name: 'P2', quantity: '350GR' },
-        { name: 'F3', quantity: '600GR' },
-        { name: 'O4', quantity: '800GR' },
-        { name: 'Z8', quantity: '1650GR' },
+        { name: 'X1', quantity: '1KG' },
+        { name: 'Y2', quantity: '2KG' },
+        { name: 'Z3', quantity: '500GR' },
       ],
     },
-    // Agregar más productos con sus respectivas fórmulas...
+    {
+      id: 3,
+      name: 'D-Pegar',
+      image: 'https://i.pinimg.com/736x/4c/c5/57/4cc5575ece9366650d34a79904a2e300.jpg',
+      formula: [
+        { name: 'X1', quantity: '1KG' },
+        { name: 'Y2', quantity: '2KG' },
+        { name: 'Z3', quantity: '500GR' },
+      ],
+    },
+  
   ];
 
-  selectedProduct: any = null; // Producto seleccionado
+  selectedProduct: any = null; // Producto seleccionado para empacar
   operatorId: string = ''; // ID del operador
-  packageType: string = ''; // Tipo de empaque
-  quantity: number = 0; // Cantidad
+  packages: Array<{ type: string; quantity: number }> = []; // Lista dinámica de tipos de empaques y cantidades
+  viewFormulaProduct: any = null; // Producto seleccionado para ver fórmula
 
-  // Método para seleccionar el producto
+  // Método para mostrar la ventana de fórmula
+  viewFormula(product: any) {
+    this.viewFormulaProduct = product;
+  }
+
+  // Método para cerrar la ventana de fórmula
+  closeFormula() {
+    this.viewFormulaProduct = null;
+  }
+
+  // Método para seleccionar el producto para empacar
   selectProduct(product: any) {
     this.selectedProduct = product;
+    this.packages = []; // Reiniciar los empaques al seleccionar un nuevo producto
+  }
+
+  // Método para agregar un nuevo empaque
+  addPackage() {
+    this.packages.push({ type: 'un cuarto', quantity: 0 }); // Agregar un empaque inicial
+  }
+
+  // Método para eliminar un empaque
+  removePackage(index: number) {
+    this.packages.splice(index, 1); // Eliminar el empaque en la posición indicada
   }
 
   // Método para registrar la producción
@@ -113,17 +135,18 @@ export class ProductsComponent {
     console.log('Producción registrada:', {
       product: this.selectedProduct,
       operatorId: this.operatorId,
-      packageType: this.packageType,
-      quantity: this.quantity,
+      packages: this.packages,
     });
 
-    // Aquí puedes implementar lógica para actualizar el inventario,
-    // descontando las cantidades según la fórmula del producto seleccionado.
-
-    // Limpiar formulario después de registrar
+    // Reiniciar los valores después de registrar
     this.operatorId = '';
-    this.packageType = '';
-    this.quantity = 0;
+    this.packages = [];
     this.selectedProduct = null;
+  }
+
+  // Método para cerrar la ventana de empacar
+  closePacking() {
+    this.selectedProduct = null;
+    this.packages = [];
   }
 }

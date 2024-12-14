@@ -1,80 +1,103 @@
 <div class="container">
-    <h1 class="title">Productos creados</h1>
-    <div class="row">
-      <div class="col-6 col-md-4 col-lg-3" *ngFor="let product of products">
-        <div class="card text-center">
-          <img [src]="product.image" class="card-img-top" alt="{{ product.name }}" />
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <button class="btn btn-primary" (click)="selectProduct(product)">Empacar</button>
+  <h1 class="title text-center my-4">Productos Creados</h1>
+  <div class="row">
+    <!-- Tarjetas de productos -->
+    <div class="col-6 col-md-4 col-lg-3 mb-4" *ngFor="let product of products">
+      <div class="card text-center h-100">
+        <img [src]="product.image" class="card-img-top" [alt]="product.name" />
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <button class="btn btn-info btn-sm mb-2" (click)="viewFormula(product)">Ver Fórmula</button>
+          <button class="btn btn-primary btn-sm" (click)="selectProduct(product)">Empacar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para Ver Fórmula -->
+<div *ngIf="viewFormulaProduct" class="modal active">
+  <div class="modal-content">
+    <button class="close-btn" (click)="closeFormula()">&times;</button>
+    <h4 class="text-center mb-4">Fórmula - {{ viewFormulaProduct.name }}</h4>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Componente</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let component of viewFormulaProduct.formula">
+          <td>{{ component.name }}</td>
+          <td>{{ component.quantity }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Modal para Empacar -->
+<div *ngIf="selectedProduct" class="modal active">
+  <div class="modal-content">
+    <button class="close-btn" (click)="closePacking()">&times;</button>
+    <h4 class="text-center mb-4">Registrar Producción - {{ selectedProduct.name }}</h4>
+    <form>
+      <!-- ID del Operador -->
+      <div class="form-group">
+        <label for="operatorId">ID del Operador</label>
+        <input
+          [(ngModel)]="operatorId"
+          name="operatorId"
+          type="text"
+          class="form-control"
+          placeholder="Ingrese ID del Operador"
+          required
+        />
+      </div>
+
+      <!-- Sección de Empaques -->
+      <div>
+        <h5 class="mt-4">Selección de Empaques</h5>
+        <div *ngFor="let pack of packages; let i = index" class="package-row mb-3">
+          <div class="form-group">
+            <label for="packageType{{ i }}">Tipo de Empaque</label>
+            <select
+              [(ngModel)]="packages[i].type"
+              [name]="'packageType' + i"
+              id="packageType{{ i }}"
+              class="form-control"
+              required
+            >
+              <option value="un cuarto">Un cuarto</option>
+              <option value="galon">Galón</option>
+              <option value="cunete">Cuñete</option>
+              <option value="medio cunete">Medio Cuñete</option>
+            </select>
           </div>
+          <div class="form-group">
+            <label for="quantity{{ i }}">Cantidad</label>
+            <input
+              [(ngModel)]="packages[i].quantity"
+              [name]="'quantity' + i"
+              id="quantity{{ i }}"
+              type="number"
+              class="form-control"
+              placeholder="Ingrese cantidad"
+              min="1"
+              required
+            />
+          </div>
+          <button type="button" class="btn btn-danger btn-sm" (click)="removePackage(i)">Eliminar</button>
         </div>
+        <button type="button" class="btn btn-secondary btn-sm" (click)="addPackage()">Agregar Empaque</button>
       </div>
+    </form>
+
+    <!-- Botones del modal -->
+    <div class="form-buttons mt-4">
+      <button type="button" class="btn btn-success" (click)="registerProduction()">Registrar Producción</button>
+      <button type="button" class="btn btn-danger" (click)="closePacking()">Cerrar</button>
     </div>
   </div>
-  
-  <!-- Modal -->
-  <div *ngIf="selectedProduct" class="custom-modal">
-    <div class="custom-modal-content">
-      <!-- Título del Modal -->
-      <h4 class="modal-title text-center">Registrar Producción - {{ selectedProduct.name }}</h4>
-  
-      <!-- Formulario de datos -->
-      <form>
-        <div class="form-section">
-          <label for="operatorId">ID del Operador</label>
-          <input
-            [(ngModel)]="operatorId"
-            name="operatorId"
-            type="text"
-            class="form-control"
-            placeholder="Ingrese ID del Operador"
-          />
-        </div>
-        <div class="form-section">
-          <label for="packageType">Tipo de Empaque</label>
-          <select [(ngModel)]="packageType" name="packageType" class="form-control">
-            <option value="bolsa">galon</option>
-            <option value="caja">Cuñete</option>
-            <option value="saco">medio cuñete</option>
-          </select>
-        </div>
-        <div class="form-section">
-          <label for="quantity">Cantidad (kg)</label>
-          <input
-            [(ngModel)]="quantity"
-            name="quantity"
-            type="number"
-            class="form-control"
-            placeholder="Ingrese cantidad (kg)"
-          />
-        </div>
-      </form>
-  
-      <!-- Fórmula del producto -->
-      <div class="formula-section">
-        <h5>Fórmula del Producto</h5>
-        <table class="table table-bordered table-striped">
-          <thead>
-            <tr>
-              <th>Componente</th>
-              <th>Cantidad</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let component of selectedProduct.formula">
-              <td>{{ component.name }}</td>
-              <td>{{ component.quantity }}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-  
-      <!-- Botones de acción -->
-      <div class="modal-buttons">
-        <button class="btn btn-success" (click)="registerProduction()">Registrar Producción</button>
-        <button class="btn btn-danger" (click)="selectedProduct = null">Cerrar</button>
-      </div>
-    </div>
-  </div>
-  
+</div>

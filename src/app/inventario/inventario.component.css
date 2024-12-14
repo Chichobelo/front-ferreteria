@@ -11,7 +11,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
-  
+
 .inventory-management {
     font-family: Arial, sans-serif;
     margin: 20px;
@@ -75,7 +75,7 @@ body {
 
 /* Botón de crear componente */
 .btn-new-component {
-    background-color: #007bff;
+    background-color: #2162a7;
     color: white;
     border: none;
     padding: 10px 15px;

@@ -247,7 +247,7 @@ body {
 
 /* Botón Agregar Ingrediente */
 .modal-content .btn-primary {
-  background-color: #4CAF50;  /* Color más fresco de verde */
+  background-color: #1da82f;  /* Color más fresco de verde */
   color: white;
 }
 
@@ -259,12 +259,12 @@ body {
 
 /* Botón Guardar */
 .modal-content .btn-success {
-  background-color: #2196F3;  /* Azul brillante */
+  background-color: #2162a7;  /* Azul brillante */
   color: white;
 }
 
 .modal-content .btn-success:hover {
-  background-color: #0b7dda;  /* Azul más oscuro */
+  background-color: #2162a7;  /* Azul más oscuro */
   transform: scale(1.05);  /* Efecto de escala al pasar el ratón */
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Sombra ligera para resaltar */
 }
